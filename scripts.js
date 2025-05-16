@@ -282,3 +282,37 @@ window.addEventListener('scroll', () => {
         if (nav) nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     }
 });
+
+// Sticky header and navigation
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    const nav = document.querySelector('nav');
+    const headerHeight = header.offsetHeight;
+    
+    if (window.scrollY > 50) {
+        header.classList.add('sticky');
+        document.body.classList.add('scrolled');
+        
+        // Add shadow to nav when scrolled
+        if (nav) {
+            nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        }
+    } else {
+        header.classList.remove('sticky');
+        document.body.classList.remove('scrolled');
+        
+        // Remove shadow from nav when at top
+        if (nav) {
+            nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        }
+    }
+    
+    // Add shadow effects
+    if (window.scrollY > 10) {
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        if (nav) nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+    } else {
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+        if (nav) nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    }
+});
