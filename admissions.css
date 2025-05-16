@@ -1,0 +1,212 @@
+
+/* Additional styles for admissions page */
+.admission-process {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.process-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    position: relative;
+    padding-top: 4rem;
+}
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px var(--primary);
+}
+
+.process-step h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.requirements-section {
+    padding: 5rem 0;
+    background-color: var(--light);
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.requirement-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.requirement-card h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary);
+}
+
+.fee-structure {
+    padding: 5rem 0;
+}
+
+.fee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.fee-table th, .fee-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.fee-table th {
+    background-color: var(--primary);
+    color: white;
+}
+
+.fee-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.fee-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.scholarships-section {
+    padding: 5rem 0;
+    background-color: var(--light);
+}
+
+.scholarship-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+}
+
+.scholarship-card h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.scholarship-card ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-section {
+    padding: 5rem 0;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    height: 120px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-submit {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.faq-section {
+    padding: 5rem 0;
+    background-color: var(--light);
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 1.5rem;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-answer.active {
+    padding: 1.5rem;
+    max-height: 500px;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+    transform: rotate(180deg);
+}
+

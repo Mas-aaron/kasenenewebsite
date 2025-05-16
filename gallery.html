@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head content as homepage -->
+    <title>Gallery - Kasenene School - Dream, Believe & Achieve With God</title>
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+      <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="Kasenene School Logo">
+                    <div class="logo-text">
+                        <h1>KASENENE SCHOOL</h1>
+                        <p>Excellence in Education</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <p><i class="fas fa-phone"></i> +256 XXX XXX XXX</p>
+                    <p><i class="fas fa-envelope"></i> info@kasenene.ac.ug</p>
+                </div>
+            </div>
+            <div class="motto">
+                <p>"Dream, Believe & Achieve With God"</p>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="#">Facilities</a></li>
+                <li><a href="#">News & Events</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Page Header -->
+    <section class="page-header" style="background: linear-gradient(135deg, var(--primary), #154360); padding: 5rem 0; color: white;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; text-align: center;">School Gallery</h1>
+            <p style="text-align: center; max-width: 700px; margin: 1rem auto; opacity: 0.9;">Explore moments from our vibrant school life through photos and videos</p>
+        </div>
+    </section>
+    
+    <!-- Photo Gallery -->
+    <section class="photo-gallery" style="padding: 5rem 0;">
+        <div class="container">
+            <div class="gallery-intro">
+                <h2 style="color: var(--primary); margin-bottom: 1rem;">Photo Gallery</h2>
+                <p>Browse through our collection of photographs capturing academic activities, sports, events, and daily life at Kasenene School.</p>
+            </div>
+            
+            <div class="gallery-categories">
+                <button class="category-btn active" data-category="all">All Photos</button>
+                <button class="category-btn" data-category="academics">Academics</button>
+                <button class="category-btn" data-category="sports">Sports</button>
+                <button class="category-btn" data-category="events">Events</button>
+                <button class="category-btn" data-category="facilities">Facilities</button>
+                <button class="category-btn" data-category="students">Student Life</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="academics">
+                    <img src="gallery-1.jpg" alt="Science Class">
+                    <div class="gallery-caption">Students conducting experiments in chemistry lab</div>
+                </div>
+                <div class="gallery-item" data-category="sports">
+                    <img src="gallery-2.jpg" alt="Football Match">
+                    <div class="gallery-caption">Inter-house football competition finals</div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="gallery-3.jpg" alt="Prize Giving">
+                    <div class="gallery-caption">Annual prize giving day ceremony</div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <img src="gallery-4.jpg" alt="Library">
+                    <div class="gallery-caption">Students studying in the school library</div>
+                </div>
+                <div class="gallery-item" data-category="students">
+                    <img src="gallery-5.jpg" alt="Drama Club">
+                    <div class="gallery-caption">Drama club performing during cultural week</div>
+                </div>
+                <div class="gallery-item" data-category="academics">
+                    <img src="gallery-6.jpg" alt="Computer Class">
+                    <div class="gallery-caption">ICT practical lesson in computer lab</div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="gallery-7.jpg" alt="Founder's Day">
+                    <div class="gallery-caption">Founder's Day celebrations with guests</div>
+                </div>
+                <div class="gallery-item" data-category="sports">
+                    <img src="gallery-8.jpg" alt="Athletics">
+                    <div class="gallery-caption">Track and field events during sports day</div>
+                </div>
+                <div class="gallery-item" data-category="students">
+                    <img src="gallery-9.jpg" alt="Art Class">
+                    <div class="gallery-caption">Art students working on their projects</div>
+                </div>
+                <div class="gallery-item" data-category="facilities">
+                    <img src="gallery-10.jpg" alt="Dormitory">
+                    <div class="gallery-caption">Girls' dormitory common area</div>
+                </div>
+                <div class="gallery-item" data-category="academics">
+                    <img src="gallery-11.jpg" alt="Debate">
+                    <div class="gallery-caption">Debate team preparing for competition</div>
+                </div>
+                <div class="gallery-item" data-category="events">
+                    <img src="gallery-12.jpg" alt="Music Festival">
+                    <div class="gallery-caption">School choir performing at music festival</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn">Load More Photos</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Gallery -->
+    <section class="video-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Video Gallery</h2>
+            </div>
+            
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Watch highlights from school events, performances, and special moments.</p>
+            
+            <div class="video-grid">
+                <div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/example1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-caption">2023 Annual Music Festival Performance</div>
+                </div>
+                <div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/example2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-caption">Graduation Ceremony Highlights</div>
+                </div>
+                <div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/example3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-caption">Science Fair Project Demonstrations</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn">View More Videos</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Photo Albums -->
+    <section class="albums-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Photo Albums</h2>
+            </div>
+            
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Browse our curated photo albums capturing special events and activities throughout the year.</p>
+            
+            <div class="albums-grid">
+                <div class="album-card">
+                    <div class="album-cover">
+                        <img src="album-1.jpg" alt="Sports Day">
+                        <div class="album-count">48 Photos</div>
+                    </div>
+                    <div class="album-info">
+                        <h3>2023 Annual Sports Day</h3>
+                        <div class="album-date">March 15, 2023</div>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-cover">
+                        <img src="album-2.jpg" alt="Graduation">
+                        <div class="album-count">62 Photos</div>
+                    </div>
+                    <div class="album-info">
+                        <h3>S6 Graduation Ceremony</h3>
+                        <div class="album-date">November 30, 2022</div>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-cover">
+                        <img src="album-3.jpg" alt="Cultural Day">
+                        <div class="album-count">75 Photos</div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Cultural Day Celebrations</h3>
+                        <div class="album-date">July 22, 2022</div>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <div class="album-cover">
+                        <img src="album-4.jpg" alt="Science Fair">
+                        <div class="album-count">36 Photos</div>
+                    </div>
+                    <div class="album-info">
+                        <h3>Science & Innovation Fair</h3>
+                        <div class="album-date">May 10, 2022</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn">View All Albums</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+    
+    <!-- Footer (same as homepage) -->
+      <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Kasenene School is committed to providing quality education that develops the whole person - intellectually, spiritually, physically, and socially.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Academics</a></li>
+                        <li><a href="#">Admissions</a></li>
+                        <li><a href="#">Facilities</a></li>
+                        <li><a href="#">News & Events</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kasenene Village, P.O. Box 123, Uganda</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+256 XXX XXX XXX</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@kasenene.ac.ug</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kasenene School. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Quality Education</p>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+  
+    <script>
+        // Gallery filtering
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                categoryBtns.forEach(btn => btn.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                
+                // Filter gallery items
+                galleryItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Gallery modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close-modal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const imgAlt = item.querySelector('img').alt;
+                modalImg.src = imgSrc;
+                modalImg.alt = imgAlt;
+                modal.style.display = 'flex';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

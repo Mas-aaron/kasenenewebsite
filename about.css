@@ -1,0 +1,139 @@
+
+/* Additional styles for about page */
+.history-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 3rem auto;
+    padding-left: 50px;
+}
+
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--secondary);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-year {
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px var(--primary);
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.mission-vision {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.mission-card, .vision-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.mission-card h3, .vision-card h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.mission-card i, .vision-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.leader-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.leader-card:hover {
+    transform: translateY(-5px);
+}
+
+.leader-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.leader-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leader-info {
+    padding: 1.5rem;
+}
+
+.leader-info h4 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.leader-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.anthem-section {
+    background: linear-gradient(135deg, var(--primary), #154360);
+    color: white;
+    padding: 3rem;
+    border-radius: 8px;
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.anthem-section h3 {
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.anthem-text {
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-style: italic;
+}
