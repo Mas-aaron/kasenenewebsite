@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function stopSlider() {
         clearInterval(slideInterval);
     }
+
     // Inside your slider initialization code:
     function initSlider() {
         const slides = document.querySelectorAll('.slide');
@@ -149,100 +150,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-
-
     // Header scroll behavior
-    let lastScroll = 0;
     const header = document.querySelector('header');
-    const headerHeight = header.offsetHeight;
-    let ticking = false;
+    let lastScroll = 0;
+    const scrollThreshold = 50; // Threshold for showing header when scrolling up
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-        
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                handleHeaderScroll(currentScroll, lastScroll);
-                ticking = false;
-            });
-            ticking = true;
-        }
-        
-        lastScroll = currentScroll;
-    });
 
-    function handleHeaderScroll(currentScroll, lastScroll) {
-        // Always show header when at top of page
-        if (currentScroll <= 10) {
+        // Show header when scrolling to top
+        if (currentScroll <= 0) {
             header.style.transform = 'translateY(0)';
+            header.classList.remove('scrolled');
+            lastScroll = 0;
             return;
         }
-        
-        // Scrolling down - hide header
-        if (currentScroll > lastScroll && currentScroll > headerHeight) {
+
+        // Add shadow when scrolled
+        if (currentScroll > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        // Hide header when scrolling down
+        if (currentScroll > lastScroll) {
             header.style.transform = 'translateY(-100%)';
-        } 
-        // Scrolling up - show header
-        else if (currentScroll < lastScroll) {
+        }
+        // Show header when scrolling up slightly
+        else if (currentScroll < lastScroll - scrollThreshold) {
             header.style.transform = 'translateY(0)';
         }
-    }
-    // // Header scroll behavior with smooth return
-    // const header = document.querySelector('header');
-    // const headerHeight = header.offsetHeight;
-    // let lastScroll = 0;
-    // let isScrolling;
-    // let scrollTimeout;
 
-    // window.addEventListener('scroll', () => {
-    //     const currentScroll = window.pageYOffset;
-        
-    //     // Clear our timeout throughout the scroll
-    //     window.clearTimeout(scrollTimeout);
-        
-    //     // Set a timeout to run after scrolling stops
-    //     scrollTimeout = setTimeout(function() {
-    //         // When scrolling stops, return header to position
-    //         header.style.transform = 'translateY(0)';
-    //     }, 150); // Adjust this value to control how quickly it returns
-        
-    //     // Always show header when scrolling to top
-    //     if (currentScroll <= 0) {
-    //         header.style.transform = 'translateY(0)';
-    //         header.classList.remove('scrolled');
-    //         return;
-    //     }
-        
-    //     // Add shadow when scrolled
-    //     if (currentScroll > 10) {
-    //         header.classList.add('scrolled');
-    //     } else {
-    //         header.classList.remove('scrolled');
-    //     }
-        
-    //     // Scrolling down
-    //     if (currentScroll > lastScroll) {
-    //         header.style.transform = 'translateY(-100%)';
-    //     } 
-    //     // Scrolling up
-    //     else if (currentScroll < lastScroll) {
-    //         header.style.transform = 'translateY(0)';
-    //     }
-        
-    //     lastScroll = currentScroll;
-    // });
+        lastScroll = currentScroll;
+    });
 
     // Make sure nav stays below header
     const nav = document.querySelector('#main-nav');
     if (nav) {
+        const headerHeight = header.offsetHeight;
         nav.style.top = `${headerHeight}px`;
     }
 });
-
-
-
-
 
 // Academics Page Tab Functionality
 function setupAcademicTabs() {
@@ -300,8 +249,6 @@ window.addEventListener('resize', function() {
     }
 });
 
-
-
 // Update the mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
@@ -335,82 +282,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Rest of your existing code...
 });
-
-
-
-// Replace the existing scroll event listener in scripts.js with this updated version
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    const header = document.querySelector('header');
-    const headerHeight = header.offsetHeight;
-    
-    // Always show header when at top of page
-    if (currentScroll <= 10) {
-        header.style.transform = 'translateY(0)';
-        header.classList.remove('scrolled');
-        return;
-    }
-    
-    // Add shadow when scrolled
-    if (currentScroll > 10) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    
-    // Scrolling down - hide header
-    if (currentScroll > lastScroll && currentScroll > headerHeight) {
-        header.style.transform = 'translateY(-100%)';
-        header.style.transition = 'transform 0.3s ease-out';
-    } 
-    // Scrolling up - show header
-    else if (currentScroll < lastScroll) {
-        header.style.transform = 'translateY(0)';
-        header.style.transition = 'transform 0.2s ease-out';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-
-
-// Animated counting for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.progress-number');
-    const speed = 500; // The lower the faster
-    
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-count');
-        const count = +counter.innerText;
-        const increment = target / speed;
-        
-        if(count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounters, 1);
-        } else {
-            counter.innerText = target;
-        }
-    });
-}
-
-// Check if element is in viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Trigger animation when progress section comes into view
-window.addEventListener('scroll', function() {
-    const progressSection = document.querySelector('.progress');
-    if(isInViewport(progressSection)) {
-        animateCounters();
-        // Remove the event listener after triggering once
-        window.removeEventListener('scroll', arguments.callee);
-    }
-});
-

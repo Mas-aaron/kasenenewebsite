@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Cause of Our Joy Junior School</title>
+    <link rel="shortcut icon" href="images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Basic styling for the contact page */
+        :root {
+            --primary: #1a1c76fb;
+            --secondary: #d4ac0d;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        .contact-header {
+            background: linear-gradient(135deg, var(--primary), #154360);
+            padding: 5rem 0;
+            color: white;
+            text-align: center;
+        }
+        .contact-header h1{
+            margin-top: 15px;
+        }
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+        }
+        
+        .map-container {
+            height: 400px;
+            margin: 3rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header id="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="images/logo.jpg" alt="School Logo">
+                    <div class="logo-text">
+                        <h1>CAUSE OF JOY JUNIOR SCHOOL</h1>
+                        <p>"Dream, Believe & Achieve With God"</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <p><i class="fas fa-phone"></i> +256 785 523 956</p>
+                    <p><i class="fas fa-envelope"></i> causeofourjoy2022@gmail.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav id="main-nav">
+            <div class="container nav-container">
+                <div class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <!-- <li><a href="#">Facilities</a></li>
+                    <li><a href="#">News & Events</a></li> -->
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#" class="active">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Contact Header -->
+    <section class="contact-header">
+        <div class="contact-container">
+            <h1>Contact Cause of Our Joy Junior School</h1>
+            <p>We'd love to hear from you! Reach out to us through any of the following channels</p>
+        </div>
+    </section>
+    
+    <!-- Contact Information -->
+    <section class="contact-container">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Our Location</h3>
+                <p>Kasenene Village, Kyegegwa District<br>Western Region, Uganda</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>causeofourjoy2022@gmail.com</p>
+                <p>For admissions: admissions@causeofourjoy.ac.ug</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us or WhatsApp us</h3>
+                <p>School Office: +256 785 523 956 </p>
+                <!-- <p>Head Teacher: +256 XXX XXX XXX</p> -->
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-clock"></i>
+                <h3>Working Hours</h3>
+                <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                <p>Saturday: 9:00 AM - 1:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form -->
+    <section class="contact-container">
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Map -->
+    <section class="contact-container">
+        <h2>Our Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7584.542317687746!2d31.045346091677803!3d0.482148143030972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1762fce0163f20c7%3A0xbe2f2903e496519b!2sKyegegwa!5e1!3m2!1sen!2sug!4v1747743189565!5m2!1sen!2sug" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7536223157963!2d30.98741541526391!3d0.3132203640121405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1761a9f9c1c1e8d5%3A0x1b9b9b9b9b9b9b9b!2sKasenene%20Village%2C%20Kyegegwa%20District%2C%20Uganda!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe> -->
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>Cause of Our Joy Junior School is committed to providing quality education that develops the whole person - intellectually, spiritually, physically, and socially.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <!-- <li><a href="#">Facilities</a></li>
+                        <li><a href="#">News & Events</a></li> -->
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Kasenene Village, Kyegegwa District, Uganda</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+256 785 523 956</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>causeofourjoy2022@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Cause of Our Joy Junior School. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> for Quality Education</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>
