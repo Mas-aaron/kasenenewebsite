@@ -8,13 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.toggle('active');
             // Toggle between hamburger and close icon
             const icon = this.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
         });
         
         // Close menu when clicking on links
@@ -28,8 +23,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Hero Slider Functionality
+    // Initialize Hero Slider
+    initSlider();
+
+    // Initialize Counter Animation
+    setupCounterObserver();
+
+    // Smooth scrolling for anchor links
+    setupSmoothScrolling();
+
+    // Header scroll behavior
+    setupHeaderScroll();
+});
+
+// Hero Slider Functionality
+function initSlider() {
     const slides = document.querySelectorAll('.slide');
+    if (slides.length === 0) return;
+
     const indicators = document.querySelectorAll('.indicator');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
@@ -56,9 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlide - 1);
     }
 
-    // Start auto sliding
+    // Start auto sliding with mobile-appropriate timing
     function startSlider() {
-        slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        const isMobile = window.innerWidth <= 768;
+        const slideIntervalTime = isMobile ? 6000 : 5000;
+        slideInterval = setInterval(nextSlide, slideIntervalTime);
     }
 
     // Stop auto sliding
@@ -66,45 +79,20 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(slideInterval);
     }
 
-    // Inside your slider initialization code:
-    function initSlider() {
-        const slides = document.querySelectorAll('.slide');
-        if (slides.length === 0) return;
-
-        // Adjust autoplay timing for mobile
-        const isMobile = window.innerWidth <= 768;
-        const slideIntervalTime = isMobile ? 6000 : 5000; // Slower on mobile
-
-        function startSlider() {
-            slideInterval = setInterval(nextSlide, slideIntervalTime);
-        }
-
-        // Rest of your slider logic...
-    }
-
-    // Call this on resize to adjust for mobile
-    window.addEventListener('resize', function() {
-        if (slideInterval) {
-            clearInterval(slideInterval);
-            startSlider();
-        }
+    // Set up event listeners
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopSlider();
+        startSlider();
     });
 
-    // Initialize slider if elements exist
-    if (slides.length > 0) {
-        // Set up event listeners
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopSlider();
-            startSlider();
-        });
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopSlider();
+        startSlider();
+    });
 
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopSlider();
-            startSlider();
-        });
-
+    if (indicators.length > 0) {
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
                 showSlide(index);
@@ -112,32 +100,97 @@ document.addEventListener('DOMContentLoaded', function() {
                 startSlider();
             });
         });
+    }
 
-        // Start auto sliding
-        startSlider();
+    // Start auto sliding
+    startSlider();
 
-        // Pause on hover
-        const slider = document.querySelector('.hero-slider');
+    // Pause on hover
+    const slider = document.querySelector('.hero-slider');
+    if (slider) {
         slider.addEventListener('mouseenter', stopSlider);
         slider.addEventListener('mouseleave', startSlider);
     }
 
-    // Smooth scrolling for anchor links
+    // Adjust on resize
+    window.addEventListener('resize', function() {
+        if (slideInterval) {
+            stopSlider();
+            startSlider();
+        }
+    });
+}
+
+// Counter Animation with IntersectionObserver
+function setupCounterObserver() {
+    const progressSection = document.querySelector('.progress');
+    if (!progressSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    observer.observe(progressSection);
+}
+
+function animateCounters() {
+    const counters = document.querySelectorAll('.progress-number');
+    if (counters.length === 0) return;
+    
+    // Adjust speed based on screen size
+    const speed = window.innerWidth <= 768 ? 100 : 200;
+    
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const duration = 2000; // 2 seconds total
+        const startTime = performance.now();
+        
+        function updateCount(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const value = Math.floor(progress * target);
+            
+            counter.textContent = value;
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCount);
+            }
+        }
+        
+        requestAnimationFrame(updateCount);
+    });
+}
+
+// Smooth Scrolling
+function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
+            if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
-            if(targetElement) {
+            if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 100,
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
                 
                 // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                const navToggle = document.querySelector('.nav-toggle');
                 if (navLinks) navLinks.classList.remove('active');
                 if (navToggle) {
                     const icon = navToggle.querySelector('i');
@@ -149,136 +202,51 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+}
 
-    // Header scroll behavior
+// Header Scroll Behavior
+function setupHeaderScroll() {
     const header = document.querySelector('header');
+    if (!header) return;
+    
+    const headerHeight = header.offsetHeight;
     let lastScroll = 0;
-    const scrollThreshold = 50; // Threshold for showing header when scrolling up
-
+    let isScrolling;
+    
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-
-        // Show header when scrolling to top
-        if (currentScroll <= 0) {
+        
+        // Clear timeout if already set
+        clearTimeout(isScrolling);
+        
+        // Set header state based on scroll direction
+        if (currentScroll <= 10) {
+            // At top of page
             header.style.transform = 'translateY(0)';
             header.classList.remove('scrolled');
-            lastScroll = 0;
-            return;
-        }
-
-        // Add shadow when scrolled
-        if (currentScroll > 10) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        // Hide header when scrolling down
-        if (currentScroll > lastScroll) {
+        } else if (currentScroll > lastScroll && currentScroll > headerHeight) {
+            // Scrolling down
             header.style.transform = 'translateY(-100%)';
-        }
-        // Show header when scrolling up slightly
-        else if (currentScroll < lastScroll - scrollThreshold) {
+            header.classList.add('scrolled');
+        } else if (currentScroll < lastScroll) {
+            // Scrolling up
             header.style.transform = 'translateY(0)';
+            header.classList.add('scrolled');
         }
-
+        
+        // Set timeout to detect scroll end
+        isScrolling = setTimeout(() => {
+            header.style.transform = 'translateY(0)';
+        }, 150);
+        
         lastScroll = currentScroll;
     });
-
-    // Make sure nav stays below header
-    const nav = document.querySelector('#main-nav');
-    if (nav) {
-        const headerHeight = header.offsetHeight;
-        nav.style.top = `${headerHeight}px`;
-    }
-});
-
-// Academics Page Tab Functionality
-function setupAcademicTabs() {
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    if (tabBtns.length > 0 && tabContents.length > 0) {
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                // Show corresponding content
-                const tabId = btn.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    }
-}
-
-// Call this function when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // ... (your existing code)
     
-    // Add this line to initialize the tabs
-    setupAcademicTabs();
-});
-
-// Update the slider initialization in your existing code
-function initSlider() {
-    const slides = document.querySelectorAll('.slide');
-    if (slides.length === 0) return;
-
-    // Adjust autoplay timing for mobile
-    const isMobile = window.innerWidth <= 768;
-    const slideIntervalTime = isMobile ? 6000 : 5000;
-
-    // Start auto sliding with mobile-appropriate timing
-    function startSlider() {
-        slideInterval = setInterval(nextSlide, slideIntervalTime);
-    }
-
-    // Rest of your existing slider code...
+    // Adjust nav position on resize
+    window.addEventListener('resize', () => {
+        const nav = document.querySelector('#main-nav');
+        if (nav) {
+            nav.style.top = `${header.offsetHeight}px`;
+        }
+    });
 }
-
-// Call this on resize to adjust for mobile
-window.addEventListener('resize', function() {
-    if (slideInterval) {
-        clearInterval(slideInterval);
-        startSlider();
-    }
-});
-
-// Update the mobile menu toggle functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('#main-nav');
-    
-    if (navToggle && nav) {
-        navToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            // Toggle between hamburger and close icon
-            const icon = this.querySelector('i');
-            if (nav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-        
-        // Close menu when clicking on links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                nav.classList.remove('active');
-                const icon = navToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-    }
-
-    // Rest of your existing code...
-});

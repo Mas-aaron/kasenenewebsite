@@ -338,79 +338,131 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Replace the existing scroll event listener in scripts.js with this updated version
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    const header = document.querySelector('header');
-    const headerHeight = header.offsetHeight;
+// // Replace the existing scroll event listener in scripts.js with this updated version
+// window.addEventListener('scroll', () => {
+//     const currentScroll = window.pageYOffset;
+//     const header = document.querySelector('header');
+//     const headerHeight = header.offsetHeight;
     
-    // Always show header when at top of page
-    if (currentScroll <= 10) {
-        header.style.transform = 'translateY(0)';
-        header.classList.remove('scrolled');
-        return;
-    }
+//     // Always show header when at top of page
+//     if (currentScroll <= 10) {
+//         header.style.transform = 'translateY(0)';
+//         header.classList.remove('scrolled');
+//         return;
+//     }
     
-    // Add shadow when scrolled
-    if (currentScroll > 10) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
+//     // Add shadow when scrolled
+//     if (currentScroll > 10) {
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
     
-    // Scrolling down - hide header
-    if (currentScroll > lastScroll && currentScroll > headerHeight) {
-        header.style.transform = 'translateY(-100%)';
-        header.style.transition = 'transform 0.3s ease-out';
-    } 
-    // Scrolling up - show header
-    else if (currentScroll < lastScroll) {
-        header.style.transform = 'translateY(0)';
-        header.style.transition = 'transform 0.2s ease-out';
-    }
+//     // Scrolling down - hide header
+//     if (currentScroll > lastScroll && currentScroll > headerHeight) {
+//         header.style.transform = 'translateY(-100%)';
+//         header.style.transition = 'transform 0.3s ease-out';
+//     } 
+//     // Scrolling up - show header
+//     else if (currentScroll < lastScroll) {
+//         header.style.transform = 'translateY(0)';
+//         header.style.transition = 'transform 0.2s ease-out';
+//     }
     
-    lastScroll = currentScroll;
-});
+//     lastScroll = currentScroll;
+// });
 
 
 
-// Animated counting for stats
-function animateCounters() {
-    const counters = document.querySelectorAll('.progress-number');
-    const speed = 500; // The lower the faster
+// // Animated counting for stats
+// function animateCounters() {
+//     const counters = document.querySelectorAll('.progress-number');
+//     const speed = 500; // The lower the faster
     
-    counters.forEach(counter => {
-        const target = +counter.getAttribute('data-count');
-        const count = +counter.innerText;
-        const increment = target / speed;
+//     counters.forEach(counter => {
+//         const target = +counter.getAttribute('data-count');
+//         const count = +counter.innerText;
+//         const increment = target / speed;
         
-        if(count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounters, 1);
-        } else {
-            counter.innerText = target;
-        }
-    });
-}
+//         if(count < target) {
+//             counter.innerText = Math.ceil(count + increment);
+//             setTimeout(animateCounters, 1);
+//         } else {
+//             counter.innerText = target;
+//         }
+//     });
+// }
 
-// Check if element is in viewport
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
+// // Check if element is in viewport
+// function isInViewport(element) {
+//     const rect = element.getBoundingClientRect();
+//     return (
+//         rect.top >= 0 &&
+//         rect.left >= 0 &&
+//         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+//         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+//     );
+// }
 
-// Trigger animation when progress section comes into view
-window.addEventListener('scroll', function() {
-    const progressSection = document.querySelector('.progress');
-    if(isInViewport(progressSection)) {
-        animateCounters();
-        // Remove the event listener after triggering once
-        window.removeEventListener('scroll', arguments.callee);
-    }
-});
+// // Trigger animation when progress section comes into view
+// window.addEventListener('scroll', function() {
+//     const progressSection = document.querySelector('.progress');
+//     if(isInViewport(progressSection)) {
+//         animateCounters();
+//         // Remove the event listener after triggering once
+//         window.removeEventListener('scroll', arguments.callee);
+//     }
+// });
+
+
+
+
+// // Improved counter animation
+// function animateCounters() {
+//     const counters = document.querySelectorAll('.progress-number');
+//     const speed = window.innerWidth <= 768 ? 100 : 200; // Faster on mobile
+    
+//     let allComplete = true;
+    
+//     counters.forEach(counter => {
+//         const target = +counter.getAttribute('data-count');
+//         const count = +counter.innerText;
+        
+//         if(count < target) {
+//             allComplete = false;
+//             const increment = Math.max(1, Math.floor(target / speed));
+//             counter.innerText = Math.min(target, count + increment);
+//         }
+//     });
+    
+//     if (!allComplete) {
+//         requestAnimationFrame(animateCounters);
+//     }
+// }
+
+// // IntersectionObserver for better performance
+// function setupCounterObserver() {
+//     const progressSection = document.querySelector('.progress');
+//     if (!progressSection) return;
+    
+//     const observer = new IntersectionObserver((entries) => {
+//         entries.forEach(entry => {
+//             if (entry.isIntersecting) {
+//                 animateCounters();
+//                 observer.unobserve(entry.target);
+//             }
+//         });
+//     }, { 
+//         threshold: 0.3, // Trigger when 30% visible
+//         rootMargin: '0px 0px -100px 0px' // Adjust trigger point
+//     });
+    
+//     observer.observe(progressSection);
+// }
+
+// // Initialize when DOM is loaded
+// document.addEventListener('DOMContentLoaded', function() {
+//     setupCounterObserver();
+//     // ... rest of your existing code ...
+// });
 

@@ -1466,3 +1466,60 @@ body {
     }
 }
 
+/* Founder's Message Section */
+.founder-message {
+    padding: 5rem 0;
+    background-color: var(--light);
+}
+
+.founder-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.founder-image img {
+    max-width: 100%;
+    width: auto;
+    border-radius: 20px;
+    justify-self: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.founder-text blockquote {
+    font-size: 1.2rem;
+    color: var(--primary);
+    border-left: 4px solid var(--secondary);
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.founder-text cite {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--dark);
+    font-style: normal;
+}
+
+/* Responsive Styles for Founder Section */
+@media (max-width: 768px) {
+    .founder-content {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+
+    .founder-image {
+        order: -1;
+    }
+
+    .founder-image img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+}
