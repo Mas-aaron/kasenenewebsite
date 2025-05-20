@@ -508,6 +508,9 @@ nav {
 }
 
 @media (max-width: 480px) {
+    .contact p{
+        display: none;
+    }
     .hero-slider {
         height: 50vh;
     }

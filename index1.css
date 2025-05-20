@@ -158,6 +158,7 @@
 
 /* Extra Small Devices (e.g., iPhone SE) */
 @media (max-width: 480px) {
+   
     .hero-slider {
         height: 45vh;
     }
