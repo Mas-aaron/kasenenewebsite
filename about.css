@@ -137,3 +137,95 @@
     line-height: 1.8;
     font-style: italic;
 }
+/* Founder Image Styling */
+.founder-image {
+    width: 100%;
+    max-width: 400px; /* Controls maximum size */
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 3/4; /* Maintains portrait proportion */
+}
+
+.founder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.founder-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Frame effect */
+.founder-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .founder-image {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .founder-image {
+        max-width: 300px;
+        margin-bottom: 2rem;
+    }
+}
+/* Founder Story Layout */
+.founder-story {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.founder-content {
+    flex: 1;
+}
+
+.founder-image-container {
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.founder-quote {
+    font-style: italic;
+    color: #555;
+    border-left: 3px solid var(--secondary);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .founder-story {
+        flex-direction: column;
+    }
+    
+    .founder-image {
+        margin-bottom: 2rem;
+    }
+}
