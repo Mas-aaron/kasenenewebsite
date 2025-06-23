@@ -465,4 +465,50 @@ document.addEventListener('DOMContentLoaded', function() {
 //     setupCounterObserver();
 //     // ... rest of your existing code ...
 // });
+// Google Translate functionality
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof google !== 'undefined' && google.translate) {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'am,ar,eu,bn,en-GB,pt-BR,bg,ca,chr,hr,cs,da,nl,en,et,fil,fi,fr,de,el,gu,iw,hi,hu,is,id,it,ja,kn,ko,lv,lt,ms,ml,mr,no,pl,pt-PT,ro,ru,sr,zh-CN,sk,sl,es,sw,sv,ta,te,th,zh-TW,tr,ur,uk,vi,cy',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
 
+    const mobileTranslateBtn = document.querySelector('.mobile-translate');
+    const translateElement = document.getElementById('google_translate_element');
+
+    if (mobileTranslateBtn && translateElement) {
+        mobileTranslateBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const isVisible = translateElement.style.display === 'block';
+            translateElement.style.display = isVisible ? 'none' : 'block';
+            
+            if (!isVisible) {
+                setTimeout(() => {
+                    const select = translateElement.querySelector('.goog-te-combo');
+                    if (select) {
+                        const event = new Event('click', { bubbles: true });
+                        select.dispatchEvent(event);
+                    }
+                }, 100);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!mobileTranslateBtn.contains(e.target) && !translateElement.contains(e.target)) {
+                const iframe = document.querySelector('.goog-te-menu-frame');
+                if (iframe && !iframe.contains(e.target)) {
+                    translateElement.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    window.addEventListener('resize', function() {
+        if (translateElement) {
+            translateElement.style.display = 'none';
+        }
+    });
+});
